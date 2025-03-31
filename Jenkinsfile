@@ -5,16 +5,16 @@ pipeline {
         DEPLOY_SERVER = "user@GCP_DEPLOY_SERVER_IP"
         DEPLOY_DIR = "/home/user/myapp"
         SSH_KEY = "/home/jenkins/.ssh/jenkins_gcp"
-        BRANCH = "${params.BRANCH_NAME}"
+        BRANCH = "${env.BRANCH_NAME}" 
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: "${BRANCH_NAME}", url: ''
+                git branch: "${BRANCH}", url: ''
             }
         }
-        
+
         stage('Setup Python') {
             steps {
                 sh 'python3 -m venv venv'
