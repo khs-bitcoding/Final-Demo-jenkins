@@ -23,21 +23,23 @@ pipeline {
             }
         }
         
-        stage('Run Tests') {
+        stage('Python Code Execution') {
             when {
                 branch 'dev'
             }
             steps {
-                sh '. venv/bin/activate && pytest tests --junitxml=report.xml'
+                echo "Deploying to Dev..."
+                sh '. venv/bin/activate && python3 main.py'
             }
         }
 
-        stage('Deploy to QA') {
+        stage('Run Tests') {
             when {
                 branch 'qa'
             }
             steps {
                 echo "Deploying to QA..."
+                sh '. venv/bin/activate && pytest tests --junitxml=report.xml'
             }
         }
 
