@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: "${BRANCH}", url: ''
+                git branch: "${BRANCH}", url: 'https://github.com/khs-bitcoding/Final-Demo-jenkins.git'
             }
         }
 
