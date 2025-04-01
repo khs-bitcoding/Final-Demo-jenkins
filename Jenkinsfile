@@ -2,9 +2,9 @@ pipeline {
     agent any
     
     environment {
-        DEPLOY_SERVER = "user@GCP_DEPLOY_SERVER_IP"
-        DEPLOY_DIR = "/home/user/myapp"
-        SSH_KEY = "/home/jenkins/.ssh/jenkins_gcp"
+        DEPLOY_SERVER = "${USER}@${GCP_DEPLOY_SERVER_IP}"
+        DEPLOY_DIR = "${DEPLOY_DIR}"
+        SSH_KEY = "${SSH_KEY}"
         BRANCH = "${env.BRANCH_NAME}" 
     }
 
